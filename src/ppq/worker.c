@@ -1,5 +1,8 @@
 #include <czmq.h>
 #include "../base.h"
+#include "ppq.h"
 
-#define HEARTBEAT_LIVENESS 3
-#define HEARTBEAT_INTERVAL 1000
+
+int main(void){
+  return 0;
+}

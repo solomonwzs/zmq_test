@@ -1,17 +1,6 @@
 #include <czmq.h>
 #include "../base.h"
-
-#define HEARTBEAT_LIVENESS 3
-#define HEARTBEAT_INTERVAL 1000
-
-#define PPP_READY "\001"
-#define PPP_HEARTBEAT "\002"
-
-typedef struct{
-  zframe_t *identity;
-  char *id_string;
-  int64_t expiry;
-} worker_t;
+#include "ppq.h"
 
 
 static worker_t *_worker_new(zframe_t *identity){
