@@ -100,7 +100,7 @@ int main(void){
         zframe_t *frame=zmsg_first(msg);
         if (memcmp(zframe_data(frame), PPP_READY, 1)
             && memcmp(zframe_data(frame), PPP_HEARTBEAT, 1)){
-          debug_log("E: invalid message from worker\n");
+          debug_log(ERROR_COLOR"E: invalid message from worker\n"NORMAL_COLOR);
           zmsg_dump(msg);
         }
         zmsg_destroy(&msg);
