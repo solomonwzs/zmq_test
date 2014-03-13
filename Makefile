@@ -18,9 +18,12 @@ TARGET 		=$(FILE:%.c=%)
 
 C_TARGET 	=$(filter-out $(ERL_TARGET), $(TARGET))
 
+API_FILE 	=$(wildcard ./api/*/*.c)
 
-all: $(TARGET) erl
 
+all:api $(TARGET) erl
+
+api:$(patsubst %.c,%.o,$(API_FILE))
 
 $(C_TARGET):$(patsubst %,%.o,$(C_TARGET)) $(BASE_FILE:%.c=%.o)
 	$(CC) $@.o $(BASE_FILE:%.c=%.o) -o ./bin/$(subst /,_,$(@:src/%=%)) $(LIB)
@@ -32,4 +35,8 @@ erl:
 	erlc -o ebin esrc/*.erl
 
 clean:
-	rm $(FILE:%.c=%.o) $(BASE_FILE:%.c=%.o) bin/* ebin/*
+	@rm $(wildcard ./src/*.o) $(wildcard ./src/*/*.o) $(wildcard ./api/*/*.o) \
+		$(wildcard ./bin/*) $(wildcard ./ebin/*)
+
+test:
+	@echo $(wildcard ./bin/*)
