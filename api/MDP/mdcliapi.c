@@ -1,9 +1,5 @@
 #include "mdcliapi.h"
 
-#define WARN_COLOR "\033[01;33m"
-#define ERROR_COLOR "\033[01;31m"
-#define NORMAL_COLOR "\033[0m"
-
 
 static void _mdcli_connect_to_broker(mdcli_t *self){
   if (self->client){

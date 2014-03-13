@@ -13,6 +13,10 @@
 #define MDPW_HEARTBEAT "\004"
 #define MDPW_DISCONNECT "\005"
 
+#define WARN_COLOR "\033[01;33m"
+#define ERROR_COLOR "\033[01;31m"
+#define NORMAL_COLOR "\033[0m"
+
 static char *mdps_commands[]={
   NULL, "READY", "REQUEST", "REPLY", "HEARTBEAT", "DISCONNECT"
 };
