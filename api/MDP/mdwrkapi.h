@@ -23,6 +23,8 @@ extern mdwrk_t *mdwrk_new(char *broker, char *service, int verbose);
 
 extern void mdwrk_destroy(mdwrk_t **self_p);
 
+extern zmsg_t *mdwrk_recv(mdwrk_t *self, zmsg_t **reply_p);
+
 #define mdwrk_set_heartbeat(_self_, _heartbeat_) \
     (_self_)->heartbeat=(_heartbeat_)
 
