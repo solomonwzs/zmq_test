@@ -41,8 +41,8 @@ $(C_TARGET):$(patsubst %,%.o,$(C_TARGET)) $(BASE_FILE:%.c=%.o)
 $(ERL_TARGET):$(patsubst %.c,%.o,$(BASE_FILE) $(ERL_FILE))
 	$(CC) $@.o $(BASE_FILE:%.c=%.o) -o ./bin/$(subst /,_,$(@:src/%=%)) $(LIB) $(ERL_LIB)
 
-$(A_TARGET):$(patsubst %,%.o,$(A_TARGET)) api
-	$(CC) $@.o $(BASE_FILE:%.c=%.o) $(wildcard $(patsubst src/%,api/%,$(dir $@.c))*.o) \
+$(A_TARGET):api $(patsubst %,%.o,$(A_TARGET))
+	$(CC) $@.o $(BASE_FILE:%.c=%.o) $(patsubst src/%,api/%,$(dir $@.c))*.o \
 		-o ./bin/$(subst /,_,$(@:src/%=%)) $(LIB)
 
 clean:
